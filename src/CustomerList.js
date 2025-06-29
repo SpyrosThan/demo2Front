@@ -6,7 +6,7 @@ function CustomerList() {
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    fetch('https://demo2back-production.up.railway.app/customers')
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/customers`)
       .then(res => res.json())
       .then(data => setCustomers(data));
   }, []);

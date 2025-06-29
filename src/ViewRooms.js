@@ -9,7 +9,7 @@ function ViewRooms({ setCustomerName }) {
   const [customerName, setLocalCustomerName] = useState('');
 
   const fetchRooms = () => {
-    fetch(`https://demo2back-production.up.railway.app/rooms/${customerId}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/rooms/${customerId}`)
       .then(res => res.json())
       .then(data => setRooms(data));
   };
@@ -20,7 +20,7 @@ function ViewRooms({ setCustomerName }) {
 
   useEffect(() => {
     // Fetch customer name
-    fetch(`https://demo2back-production.up.railway.app/customers/${customerId}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/customers/${customerId}`)
       .then(res => res.json())
       .then(data => {
         setCustomerName && setCustomerName(data.name);
@@ -36,7 +36,7 @@ function ViewRooms({ setCustomerName }) {
 
   const handleRoomSubmit = (e) => {
     e.preventDefault();
-    fetch('https://demo2back-production.up.railway.app/rooms', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/rooms`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ room_name: roomName, customer_id: customerId })

@@ -10,7 +10,7 @@ function EditCustomer({ setCustomerName }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch(`https://demo2back-production.up.railway.app/customers/${id}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/customers/${id}`)
       .then(res => res.json())
       .then(data => {
         // Ensure all fields are present
@@ -36,7 +36,7 @@ function EditCustomer({ setCustomerName }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch(`https://demo2back-production.up.railway.app/customers/${id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/customers/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
@@ -53,7 +53,7 @@ function EditCustomer({ setCustomerName }) {
 
   // Confirm delete
   const confirmDelete = () => {
-    fetch(`https://demo2back-production.up.railway.app/customers/${id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/customers/${id}`, {
       method: 'DELETE'
     })
       .then(res => {

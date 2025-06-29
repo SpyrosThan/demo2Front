@@ -7,7 +7,7 @@ function Login({ onLogin }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch('https://demo2back-production.up.railway.app/login', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })

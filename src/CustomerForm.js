@@ -13,7 +13,7 @@ function CustomerForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch('https://demo2back-production.up.railway.app/customers', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/customers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
